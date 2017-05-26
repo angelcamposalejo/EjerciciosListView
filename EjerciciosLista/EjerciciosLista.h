@@ -9,6 +9,8 @@ public:
 	~EjerciciosLista()
 	{
 	}
+
+	Win::ImageList imageList;
 protected:
 	//______ Wintempla GUI manager section begin: DO NOT EDIT AFTER THIS LINE
 	Win::ListView lv1;

@@ -8,13 +8,23 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE, LPTSTR cmdLine, int cmdSho
 
 void EjerciciosLista::Window_Open(Win::Event& e)
 {
+	//Crear imagen list
+	imageList.Create(32, 32, 2);
+	imageList.AddIcon(this->hInstance, IDI_ICON1);
+	imageList.AddIcon(this->hInstance, IDI_ICON2);
 	//________________________________________________________ lv1
-	lv1.Cols.Add(0, LVCFMT_LEFT, 100, L"Par");
-	lv1.Cols.Add(1, LVCFMT_RIGHT, 200, L"Impar");
+	lv1.SetImageList(imageList, true);
+	lv1.Cols.Add(0, LVCFMT_LEFT, 100, L"Número");
 	for (int i = 0; i <= 10; i++)
 	{
-		lv1.Items.Add(i, Sys::Convert::ToString(2 * i), 100 + i);
-		lv1.Items[i][1].Text = Sys::Convert::ToString(2 * i + 1);
+		if (i % 2 == 0)
+		{
+			lv1.Items.Add(i-1,0,Sys::Convert::ToString(i));
+		}
+		else
+		{
+			lv1.Items.Add(i - 1, 1, Sys::Convert::ToString(i));
+		}
 	}
 }
 
